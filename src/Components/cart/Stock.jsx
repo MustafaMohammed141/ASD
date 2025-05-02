@@ -4,7 +4,7 @@ const Stock = ({
   prods: { Id, name, Price, Stock, quantity },
   inc,
   dec,
-  reset,
+  del,
 }) => {
   return (
     <div className="w-3/4 flex justify-evenly items-center p-2 my-2 font-bold bg-blue-500 rounded-lg">
@@ -24,7 +24,7 @@ const Stock = ({
       </button>
       <button
         className="btn bg-red-500 hover:bg-red-600 hover:border-none border-none hover:shadow-none shadow-none text-xl"
-        onClick={() => reset(Id)}>
+        onClick={() => del(Id)}>
         Delete
       </button>
     </div>

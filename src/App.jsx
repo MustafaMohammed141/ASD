@@ -4,10 +4,10 @@ import Items from "./Components/cart/Items";
 
 const App = () => {
   let [prods, setprods] = useState([
-    { Id: 1, name: "CPU", Price: 6, Stock: 20, quantity: 0 },
-    { Id: 2, name: "GPU", Price: 20, Stock: 50, quantity: 0 },
-    { Id: 3, name: "MB", Price: 3, Stock: 12, quantity: 0 },
-    { Id: 4, name: "RAM", Price: 1, Stock: 25, quantity: 0 },
+    { Id: 1, name: "CPU", Price: 6, Stock: 20, quantity: 1 },
+    { Id: 2, name: "GPU", Price: 20, Stock: 50, quantity: 1 },
+    { Id: 3, name: "MB", Price: 3, Stock: 12, quantity: 1 },
+    { Id: 4, name: "RAM", Price: 1, Stock: 25, quantity: 1 },
   ]);
 
   const inc = (Id) => {
@@ -35,20 +35,12 @@ const App = () => {
       }
       return prod;
     });
+    updt = updt.filter((prod) => prod.quantity !== 0);
     setprods(updt);
   };
 
-  const reset = (Id) => {
-    let updt = prods.map((prod) => {
-      if (prod.Id === Id) {
-        return {
-          ...prod,
-          Stock: prod.Stock + prod.quantity,
-          quantity: 0,
-        };
-      }
-      return prod;
-    });
+  const del = (Id) => {
+    let updt = prods.filter((prod) => prod.Id !== Id);
     setprods(updt);
   };
 
@@ -63,7 +55,7 @@ const App = () => {
         prods={prods}
         inc={inc}
         dec={dec}
-        reset={reset}
+        del={del}
         total={calculateTotal()}
       />
     </div>
