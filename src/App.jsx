@@ -50,7 +50,7 @@ const App = () => {
 
   return (
     <div>
-      <Header />
+      <Header prods={prods} />
       <Items
         prods={prods}
         inc={inc}

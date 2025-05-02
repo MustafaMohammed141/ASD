@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { RiShoppingCartFill } from "react-icons/ri";
-function Header() {
-  let cart = useState(0);
+function Header({ prods }) {
+  let [cart, setCart] = useState(0);
+  useEffect(() => {
+    setCart(prods.reduce((x, prod) => x + prod.quantity, 0));
+  }, [prods]);
+
   return (
     <div>
       <div className="navbar bg-C4 text-primary-content">
